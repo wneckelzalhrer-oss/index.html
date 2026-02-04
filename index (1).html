@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DO ZERO AO EXTRAORDINÁRIO - E-book Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #D97757;
+            --primary-dark: #C06546;
+            --dark: #1a1a1a;
+            --gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--white);
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(217, 119, 87, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(217, 119, 87, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: #cccccc;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .cta-primary {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(217, 119, 87, 0.3);
+            animation: fadeInUp 1.4s ease;
+        }
+
+        .cta-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(217, 119, 87, 0.4);
+        }
+
+        .price {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: #aaaaaa;
+            animation: fadeInUp 1.6s ease;
+        }
+
+        .price strong {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Pain Points Section */
+        .pain-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pain-card {
+            background: var(--light-gray);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateX(5px);
+        }
+
+        .pain-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .pain-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .solution-section .section-title {
+            color: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto 0;
+        }
+
+        .benefit-item {
+            text-align: center;
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .benefit-item p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* What's Included */
+        .included-section {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .included-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .included-item {
+            background: var(--light-gray);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: start;
+            gap: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .included-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .check-icon {
+            background: var(--primary);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .included-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .included-content p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 80px 20px;
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .guarantee-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 50px 40px;
+            border-radius: 20px;
+            border: 2px solid var(--primary);
+        }
+
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .guarantee-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .guarantee-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .final-cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 30px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .choice-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .choice-option {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 4px solid var(--gray);
+        }
+
+        .choice-option.highlight {
+            border-left-color: var(--primary);
+        }
+
+        .choice-option h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .choice-option p {
+            color: #aaaaaa;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #666;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 50px;
+            }
+
+            .pain-section,
+            .solution-section,
+            .included-section,
+            .guarantee-section,
+            .final-cta {
+                padding: 60px 20px;
+            }
+
+            .cta-primary {
+                padding: 18px 40px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">✨ LANÇAMENTO OFICIAL</span>
+            <h1>DO ZERO AO<br>EXTRAORDINÁRIO</h1>
+            <p class="subtitle">O guia definitivo para transformar sua mente e construir renda no digital (mesmo trabalhando CLT)</p>
+            <a href="#comprar" class="cta-primary">QUERO COMEÇAR AGORA</a>
+            <span class="price">Investimento único de <strong>R$ 27</strong></span>
+        </div>
+    </section>
+
+    <!-- Pain Points -->
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">Você já se sentiu assim?</h2>
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <h3>❌ Consumo sem ação</h3>
+                    <p>Passa horas vendo conteúdo sobre mudança de vida, mas nunca executa nada de verdade.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Cursos pela metade</h3>
+                    <p>Compra cursos que ficam incompletos porque "não tem tempo" ou "não funciona pra mim".</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Comparação constante</h3>
+                    <p>Vê outras pessoas construindo renda extra e pensa "por que eu não consigo?"</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ CLT que consome tudo</h3>
+                    <p>Trabalha 8h no emprego e chega em casa sem energia para o que realmente importa.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Sempre procrastinando</h3>
+                    <p>Diz "vou começar segunda-feira" mas nunca começa de fato.</p>
+                </div>
+                <div class="pain-card">
+                    <h3>❌ Sem direção clara</h3>
+                    <p>Tem vontade de mudar, mas não sabe exatamente por onde começar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution -->
+    <section class="solution-section">
+        <div class="container">
+            <h2 class="section-title">A solução que você precisava</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">Este não é mais um e-book motivacional cheio de frases bonitas. É um guia prático, direto e honesto para você sair do consumo e ir para a construção.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">🧠</div>
+                    <h3>Clareza Mental</h3>
+                    <p>Organize sua mente antes de tentar organizar sua vida</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Rotina Funcional</h3>
+                    <p>Sistema que funciona mesmo com CLT e vida real</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Renda Digital</h3>
+                    <p>3 modelos reais sem ilusão ou promessas vazias</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">📅</div>
+                    <h3>Plano Executável</h3>
+                    <p>30 dias de ações práticas para sair da inércia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">O que você vai receber</h2>
+            <div class="included-list">
+                <div class="included-item">
+                    <div class="check-icon">✓</div>
+                    <div class="included-content">
+                        <h3>E-BOOK COMPLETO (40 páginas)</h3>
+                        <p><strong>Capítulo 1:</strong> Clareza Mental - organize a mente antes da vida<br>
+                        <strong>Capítulo 2:</strong> Vida Real Organizada - rotina mínima funcional<br>
+                        <strong>Capítulo 3:</strong> O Digital Sem Ilusão - 3 modelos reais de renda<br>
+                        <strong>Capítulo 4:</strong> Plano 30 Dias - saia do consumo e vá para ação</p>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="check-icon">✓</div>
+                    <div class="included-content">
+                        <h3>BÔNUS #1: CHECKLIST DE ROTINA MÍNIMA</h3>
+                        <p>Checklist diária para manter consistência sem virar robô produtivo. Use todos os dias para não se perder no caminho.</p>
+                    </div>
+                </div>
+                <div class="included-item">
+                    <div class="check-icon">✓</div>
+                    <div class="included-content">
+                        <h3>BÔNUS #2: TRACKER DE 30 DIAS</h3>
+                        <p>Ferramenta completa para acompanhar seu progresso dia a dia e ajustar o que não está funcionando.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">🔒</div>
+                <h2>Garantia Incondicional</h2>
+                <p>Compre agora, leia o e-book, aplique o conteúdo.</p>
+                <p style="margin-top: 20px;">Se dentro de <strong style="color: var(--primary);">7 dias</strong> você achar que o material não vale cada centavo, basta enviar um email e devolvemos <strong style="color: var(--primary);">100% do seu dinheiro</strong>.</p>
+                <p style="margin-top: 20px; font-size: 1.2rem; color: var(--white);"><strong>Sem perguntas. Sem burocracia. O risco é TODO nosso.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="comprar">
+        <div class="container">
+            <h2>Duas opções se apresentam agora</h2>
+            
+            <div class="choice-container">
+                <div class="choice-option">
+                    <h3>OPÇÃO 1: Continuar no mesmo lugar</h3>
+                    <p>Você fecha esta página. Volta para o Instagram. Consome mais conteúdo. E daqui a 6 meses, continua exatamente no mesmo lugar.</p>
+                </div>
+                <div class="choice-option highlight">
+                    <h3>OPÇÃO 2: Começar a transformação</h3>
+                    <p>Você investe R$ 27 (menos que um almoço). Lê o material. Executa o plano de 30 dias. E daqui a 6 meses, está construindo a vida que sempre quis.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <a href="https://pay.kiwify.com.br/seu-link-aqui" class="cta-primary" style="font-size: 1.3rem; padding: 22px 60px;">
+                    🔥 ESCOLHO A OPÇÃO 2 - QUERO COMEÇAR
+                </a>
+                <p style="margin-top: 20px; color: #aaa;">
+                    ✅ Acesso imediato após a compra<br>
+                    ✅ E-book + 2 bônus práticos<br>
+                    ✅ Garantia de 7 dias (risco zero)
+                </p>
+            </div>
+
+            <div style="margin-top: 60px; padding: 40px; background: rgba(217, 119, 87, 0.1); border-radius: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 1.3rem; color: var(--white); font-weight: 600; margin-bottom: 10px;">
+                    Você não está atrasado.
+                </p>
+                <p style="font-size: 1.3rem; color: var(--white); font-weight: 600; margin-bottom: 10px;">
+                    Você só estava desorganizado.
+                </p>
+                <p style="font-size: 1.5rem; color: var(--primary); font-weight: 700; margin-top: 20px;">
+                    E quem começa com direção, chega.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 - DO ZERO AO EXTRAORDINÁRIO - Todos os direitos reservados</p>
+            <p>Dúvidas? Entre em contato: contato@seudominio.com</p>
+        </div>
+    </footer>
+</body>
+</html>
